@@ -34,7 +34,7 @@ function HomeScreen(){
                             </Button>
                         </Paper>
                     </Grid> */}
-                    {/* <Grid item xs = {4}>
+                    <Grid item xs = {4}>
                         <Paper elevation = {3} className = {classes.paper}>
                             <img src = {replicantImage} className = {classes.replicantImage}/>
                             <h1 className ={classes.itemTitle}>Replicant Nft</h1>
@@ -42,8 +42,8 @@ function HomeScreen(){
                                 Manage Replicant Nft 
                             </Button>
                         </Paper>
-                    </Grid> */}
-                    <Grid item xs = {4}>
+                    </Grid>
+                    {/* <Grid item xs = {4}>
                         <Paper elevation = {3} className = {classes.paper}>
                             <img src = {echoesImage} className = {classes.replicantImage}/>
                             <h1 className ={classes.itemTitle}>Echoes Nft</h1>
@@ -51,7 +51,7 @@ function HomeScreen(){
                                 Manage Echoes Nft 
                             </Button>
                         </Paper>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
         </div>)
 

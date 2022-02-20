@@ -895,6 +895,13 @@ export async function compileReplicantProgram(client){
     byte "tx_sent_to_artist"
     int 1
     app_global_put
+    byte "owner"
+    gtxn 0 AssetReceiver
+    app_global_put
+    //Freeze contract
+    byte "contract_frozen"
+    int 1
+    app_global_put
     int 1
     return
     
