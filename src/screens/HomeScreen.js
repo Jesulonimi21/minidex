@@ -38,8 +38,8 @@ function HomeScreen(){
                         <Paper elevation = {3} className = {classes.paper}>
                             <img src = {replicantImage} className = {classes.replicantImage}/>
                             <h1 className ={classes.itemTitle}>Replicant Nft</h1>
-                            <Button variant ="contained" onClick = {moveToReplicantNftManageScreen} color="primary"  className = {classes.itemButton}>
-                                Manage Replicant Nft 
+                            <Button variant ="contained" onClick = {moveToReplicantApSalesScreen} color="primary"  className = {classes.itemButton}>
+                                 Replicant AP SALES 
                             </Button>
                         </Paper>
                     </Grid>
@@ -64,6 +64,10 @@ function HomeScreen(){
     }
     function moveToEchoesNftManageScreen(){
         history.push('/manage-echoes')
+    }
+
+    function moveToReplicantApSalesScreen(){
+        history.push('/replicant-apsales');
     }
 }
 

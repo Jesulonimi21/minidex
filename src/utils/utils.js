@@ -343,6 +343,24 @@ export const replicantAsaInfo =[
 
 ]
 
+var replicantasssetCreatorAddress = "VTAUB5LOVTWKXICWEDBO5UG2JNNGEW7ULRB4PQB23DGRKSAXDVPORQNZJE"
+var replicantArtist1Address= "M2WNUPEYKJTIQBYG2IUGXE3FWHN6EBEA6S7AF63O7OPBMUUEMB2UBYLI5Q";
+var replicantArtist2Address = "NL2YCOBKWPI35PYSU4LGNM2II4PW7C766GJCRLFSDNVS47AV2MRHZ7A7FI";
+var replicantArtist3Address= "FUZIWXSI2RTPW65MG475T7XKFC4O6LFPNG6J33RN4U2O4VZZQWMGFU6M24";
+var replicantArtist4Address = "LJX5SYXKAIXZ5PXBHJA4KBVHRHV5DWJ2MUBC2CWDAQIYFYOQVENLC4CYO4";
+var replicantArtist5Address = "2A7KDBW3BJMGNNKF563QOVYC466POE5MTFXUVODNPTZRMDFZTHFYC7ZJFM";
+var replicantArtist6Address = "3FT4J6OASHOTMXUVNJO5NC4WBQ75WUCBZFLFFL5BJPE6SRXFXOJ2RYYP7E";
+var replicantArtist7Address = "YH3UYXKH6RDLDKNVVZCLXJI3HPNLXYKT5I7UPDV33UQCFO7CYIU6KJN6BE";
+var replicantArtist8Address = "SDLB42ELW7ZDAYLSANL5AWLM7CKJPAW5FVNYE3PBCMVC7JMWHEZ7NKPPOE"
+var replicantArtist9Address = "SEUECQKE4P7UEPBRA4GNXHVCGAIRRACDZHOONP6Q4HKT3YRYA3LKS62E7I"
+export const replicantApAppIds = [ 387034562, 387161797, 387166820, 387169663, 387171644, 387175171, 387176902, 387179258, 387181363, 387185953];
+export const replicantApAssetIds = [ 386913525, 386913526, 386913527, 386913528, 386913529, 386913530, 386913531, 386913532, 386913533,  386913534 ]
+export const replicantArtistAddresses = [{name:  "Gordon", address: replicantArtist1Address}, {name: "Galath3A", address: replicantArtist2Address}, {name: "Hung", address: replicantArtist3Address},
+{name: "keiken", address: replicantArtist4Address}, {name: "Katja", address: replicantArtist5Address}, {name: "Jennifer", address: replicantArtist6Address},
+ {name: "Woo", address: replicantArtist7Address}, {name: "Qianqian", address: replicantArtist8Address}, {name: "Konrad", address: replicantArtist9Address},
+  {name: "Epoch", address: replicantasssetCreatorAddress} ]
+
+
 export function getReplicantAsaToClawbackInfo(params,sender, assetFreeze,assetManager,assetReserve,assetClawback){
     const asaArray = [386913126, 386913127, 386913128, 386913129, 386913130, 386913131, 386913132, 386913133, 386913134, 386913135, 386913136, 386913137, 386913138, 386913139, 386913140, 386913141, 386913521, 386913522, 386913523, 386913524, 386913525, 386913526, 386913527, 386913528, 386913529, 386913530, 386913531, 386913532, 386913533,  386913534  ];
     let assetClawbackAddresses = [
@@ -1060,6 +1078,36 @@ export async function compileReplicantProgram(client){
     });
 }
 
+
+export async function compileStatelessProgram(client, assetId, appId){
+    var statelessProgram = `
+    #pragma version 4
+    txn RekeyTo
+    global ZeroAddress
+    ==
+    txn CloseRemainderTo
+    global ZeroAddress
+    ==
+    &&
+    txn  XferAsset
+    int ${assetId}
+    ==
+    &&
+    gtxn 1 ApplicationID
+    int ${appId}
+    ==
+    &&
+    return`
+    return new Promise(async(resolve,reject)=>{
+        try{
+            const results = await client.compile(statelessProgram).do();
+            resolve(results)
+        }catch(error){
+           reject(error) 
+        }
+       
+    });
+}
 
 export  async function compileClearProgram(client){
     var clearProgramSource=`#pragma version 4

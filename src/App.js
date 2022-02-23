@@ -25,6 +25,7 @@ import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
 import { formatJsonRpcRequest } from "@json-rpc-tools/utils";
 import {BrowserRouter as Router,Switch,Route, useHistory} from 'react-router-dom';
+import ReplicantApSales from './screens/ReplicantApSales';
 
 function App(props) {
 
@@ -163,6 +164,9 @@ function App(props) {
             
             <Route path="/manage-echoes">
               <ManageEchoesNft sender = {account} />
+            </Route>
+            <Route path="/replicant-apsales">
+              <ReplicantApSales sender = {account} />
             </Route>
             <Route path = "/">
               <Home/>
