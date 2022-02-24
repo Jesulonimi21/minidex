@@ -290,7 +290,9 @@ let handleCloseD1=()=>{
             appIndex: appId,
             fee: 1000,
             flatFee: true,
-            ...params
+            ...params,
+            note: new Uint8Array(Buffer.from('Replicant – NFT", 2001')),
+            appArgs
     };
         return txn;
     }

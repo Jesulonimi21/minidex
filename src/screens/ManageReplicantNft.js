@@ -123,7 +123,7 @@ function ReplicantNftCreation(){
         let updateAppTxns =  [];
         appIds.map((el, index) => {
             if(index < 16){
-            let   updateAppTxn =   updateApplication(el, approvalProgram,clearProgram,params,epochAddress);
+            let updateAppTxn =   updateApplication(el, approvalProgram,clearProgram,params,epochAddress);
             updateAppTxns.push(updateAppTxn);
             }
         })
@@ -195,6 +195,7 @@ function ReplicantNftCreation(){
 
         let approvalProgram =  new Uint8Array(Buffer.from(compiledApprovalProgram.result,"base64"));
         let clearProgram =  new Uint8Array(Buffer.from(compiledClearProgram.result,"base64"));
+
 
         console.log(approvalProgram);
         console.log(clearProgram);
